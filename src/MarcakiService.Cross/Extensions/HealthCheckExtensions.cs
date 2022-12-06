@@ -1,9 +1,11 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 namespace MarcakiService.Cross.Extensions;
 
+[ExcludeFromCodeCoverage]
 public static class HealthCheckExtensions
 {
     public static void ConfigureHealthChecks(this IHealthChecksBuilder builder, IConfiguration configuration)

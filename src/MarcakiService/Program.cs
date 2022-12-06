@@ -1,7 +1,9 @@
+using System.Diagnostics.CodeAnalysis;
 using HealthChecks.UI.Client;
 using MarcakiService.Cross.Extensions;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.OpenApi.Models;
+
+[assembly: ExcludeFromCodeCoverage]
 
 var builder = WebApplication.CreateBuilder(args);
 
