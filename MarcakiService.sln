@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarcakiService.Domain.UnitT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarcakiService.Domain", "src\MarcakiService.Domain\MarcakiService.Domain.csproj", "{51AE0B3D-216B-44ED-AA2E-8D74D45BD794}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarcakiService.Cross", "src\MarcakiService.Cross\MarcakiService.Cross.csproj", "{0E91728D-53ED-4E87-A32E-FD097F2EBD0C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,10 +30,15 @@ Global
 		{51AE0B3D-216B-44ED-AA2E-8D74D45BD794}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51AE0B3D-216B-44ED-AA2E-8D74D45BD794}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51AE0B3D-216B-44ED-AA2E-8D74D45BD794}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E91728D-53ED-4E87-A32E-FD097F2EBD0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E91728D-53ED-4E87-A32E-FD097F2EBD0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E91728D-53ED-4E87-A32E-FD097F2EBD0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E91728D-53ED-4E87-A32E-FD097F2EBD0C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{DAD3561D-67C6-4F8D-888A-C7EE09E173C7} = {F1163470-C54A-4AC8-9FD7-4E883E80C917}
 		{7259DF61-EEEF-4C4E-A878-9D8B484487BC} = {A50A4786-ABBA-4D75-A091-01CF2EBB5182}
 		{51AE0B3D-216B-44ED-AA2E-8D74D45BD794} = {F1163470-C54A-4AC8-9FD7-4E883E80C917}
+		{0E91728D-53ED-4E87-A32E-FD097F2EBD0C} = {F1163470-C54A-4AC8-9FD7-4E883E80C917}
 	EndGlobalSection
 EndGlobal
