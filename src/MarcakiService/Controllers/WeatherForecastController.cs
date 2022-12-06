@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace MarcakiService.Api.Controllers;
+namespace MarcakiService.Application.Controllers;
 
 [ApiController]
 [Route("[controller]")]

@@ -1,4 +1,4 @@
-namespace MarcakiService.Api;
+namespace MarcakiService.Application;
 
 public class WeatherForecast
 {
