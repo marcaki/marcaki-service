@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarcakiService.Api", "src\MarcakiService\MarcakiService.Api.csproj", "{DAD3561D-67C6-4F8D-888A-C7EE09E173C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarcakiService.Application", "src\MarcakiService\MarcakiService.Application.csproj", "{DAD3561D-67C6-4F8D-888A-C7EE09E173C7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F1163470-C54A-4AC8-9FD7-4E883E80C917}"
 EndProject
