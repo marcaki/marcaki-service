@@ -3,6 +3,8 @@ using HealthChecks.UI.Client;
 using MarcakiService.Cross.Extensions;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
+[assembly: ExcludeFromCodeCoverage]
+
 var builder = WebApplication.CreateBuilder(args);
 
 IConfiguration configuration = new ConfigurationBuilder()
