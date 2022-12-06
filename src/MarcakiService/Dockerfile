@@ -4,7 +4,7 @@ EXPOSE 80
 EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /src
+WORKDIR /
 COPY ["MarcakiService.Api.csproj", "./"]
 RUN dotnet restore "MarcakiService.Api.csproj"
 COPY . .
