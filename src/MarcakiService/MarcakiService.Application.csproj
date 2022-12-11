@@ -10,11 +10,15 @@
 
     <ItemGroup>
         <PackageReference Include="FluentValidation" Version="11.4.0" />
+        <PackageReference Include="MediatR" Version="11.1.0" />
+        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.11" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\MarcakiService.Cross\MarcakiService.Cross.csproj" />
+      <ProjectReference Include="..\MarcakiService.Repository\MarcakiService.Repository.csproj" />
     </ItemGroup>
 
 </Project>

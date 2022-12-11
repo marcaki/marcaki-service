@@ -1,6 +1,12 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 using HealthChecks.UI.Client;
+using MarcakiService.Cross.CommandHandlers;
 using MarcakiService.Cross.Extensions;
+using MarcakiService.Domain.Commands;
+using MarcakiService.Domain.Repository;
+using MarcakiService.Repository;
+using MediatR;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 [assembly: ExcludeFromCodeCoverage]
@@ -20,6 +26,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHealthChecks().ConfigureHealthChecks(configuration);
+builder.Services.AddMediatR(Assembly.GetExecutingAssembly(), typeof(CreateProviderCommandHandler).Assembly);
+builder.Services.AddScoped<TContext>();
+builder.Services.AddScoped<IProviderRepository, ProviderRepository>();
 
 var app = builder.Build();
 
