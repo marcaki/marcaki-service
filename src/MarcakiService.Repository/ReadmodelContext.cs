@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MarcakiService.Repository;
 
-public class TContext : DbContext
+public class ReadmodelContext : DbContext
 {
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

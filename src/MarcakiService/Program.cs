@@ -27,7 +27,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHealthChecks().ConfigureHealthChecks(configuration);
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly(), typeof(CreateProviderCommandHandler).Assembly);
-builder.Services.AddScoped<TContext>();
+builder.Services.AddScoped<ReadmodelContext>();
 builder.Services.AddScoped<IProviderRepository, ProviderRepository>();
 
 var app = builder.Build();

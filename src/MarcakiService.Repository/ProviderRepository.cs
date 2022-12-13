@@ -5,21 +5,21 @@ namespace MarcakiService.Repository;
 
 public class ProviderRepository : IProviderRepository
 {
-    private TContext _context;
+    private ReadmodelContext _readmodelContext;
 
-    public ProviderRepository(TContext context)
+    public ProviderRepository(ReadmodelContext readmodelContext)
     {
-        _context = context;
+        _readmodelContext = readmodelContext;
     }
     
     public async Task<string> Add(Provider entity)
     {
-        await _context.Providers.AddAsync(entity);
+        await _readmodelContext.Providers.AddAsync(entity);
         return entity.Id;
     }
 
     public List<Provider> GetAll()
     {
-        return _context.Providers.ToList();
+        return _readmodelContext.Providers.ToList();
     }
 }
