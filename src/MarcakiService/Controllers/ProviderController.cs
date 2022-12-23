@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using MarcakiService.Application.Contracts;
 using MarcakiService.Application.Contracts.Responses;
+using MarcakiService.Domain.Events;
 using MarcakiService.Domain.Repository;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -40,7 +41,7 @@ public class ProviderController : Controller
     public IActionResult GetProviders()
     {
         var response = _aggregateRepository.GetEvents()
-            .Select(x => new EventResponse(JsonConvert.DeserializeObject(x.Payload), x.EventKey));
+            .Select(x => new EventResponse(JsonConvert.DeserializeObject<ProviderCreated>(x.Payload), x.EventKey, x.EventType));
         return new OkObjectResult(response);
     }
 }

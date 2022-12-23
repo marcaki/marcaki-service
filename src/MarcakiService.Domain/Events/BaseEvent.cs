@@ -19,6 +19,11 @@ public class BaseEvent : IEvent
         EventCommittedTimestamp = DateTime.UtcNow;;
     }
 
+    protected BaseEvent()
+    {
+        
+    }
+
     public virtual string SerializePayload()
     {
         return JsonConvert.SerializeObject(this);

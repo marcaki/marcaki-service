@@ -5,14 +5,14 @@ public class EventPayload
     public virtual string Id { get; set; }
     public virtual string Payload { get; set; }
     public virtual string EventKey { get; set; }
-    public string AggregateType { get; set; }
+    public virtual string EventType { get; set; }
     
-    public EventPayload(string payload, string eventKey, string aggregateType)
+    public EventPayload(string payload, string eventKey, string eventType)
     {
         Id = eventKey;
         Payload = payload;
         EventKey = eventKey;
-        AggregateType = aggregateType;
+        EventType = eventType;
     }
 
     public EventPayload()

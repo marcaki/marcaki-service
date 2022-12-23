@@ -18,6 +18,10 @@ public class ProviderCreated : BaseEvent
     public Status Status { get; set; }
     public DateTime CreationDate { get; set; }
 
+    public ProviderCreated() : base()
+    {
+        
+    }
     public ProviderCreated(CreateProvider command) : base(command.AggregateId)
     {
         Name = command.Name;
@@ -30,7 +34,7 @@ public class ProviderCreated : BaseEvent
         Status = command.Status;
         CreationDate = command.CreationDate;
         AggregateVersion = 1;
-        AggregateType = GetType().FullName;
+        AggregateType = GetType().FullName.Remove(0,29);
     }
     
     public override string SerializePayload()
