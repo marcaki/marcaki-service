@@ -1,4 +1,7 @@
-﻿using FluentValidation.Results;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using FluentValidation.Results;
 using MarcakiService.Application.Contracts.Validators;
 using MarcakiService.Domain.Commands;
 
@@ -11,8 +14,7 @@ public class CreateProviderRequest
     public List<PhoneRequest> Phones { get; set; }
     public string Email { get; set; }
     public List<string> Address { get; set; }
-    public List<string> Employees { get; set; }
-    public List<string> Services { get; set; }
+    public string Services { get; set; }
     public List<AvailabilityRequest> Availability { get; set; }
 
     public ValidationResult Validate()
@@ -22,13 +24,14 @@ public class CreateProviderRequest
 
     public CreateProvider GetCommand()
     {
+        var aggregateId = Guid.NewGuid().ToString();
         return new CreateProvider(
+            aggregateId,
             Name,
             Document.ToDomain(),
-            Phones.Select(x => x.ToDomain()).ToList(),
+            Phones.Select(x => x.ToDomain(aggregateId)).ToList(),
             Email,
             Address,
-            Employees,
             Services,
             Availability.Select(x => x.ToDomain()).ToList());
     }

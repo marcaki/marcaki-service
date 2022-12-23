@@ -11,8 +11,7 @@ public class Provider : AggregateRoot
     public List<Phone> Phones { get; set; }
     public string Email { get; set; }
     public List<string> Address { get; set; }
-    public List<string> Employees { get; set; }
-    public List<string> Services { get; set; }
+    public string Services { get; set; }
     public List<Availability> Availability { get; set; }
     public Status Status { get; set; }
     public string ActivationDate { get; set; }
@@ -32,7 +31,6 @@ public class Provider : AggregateRoot
         Document = request.Document;
         Phones = request.Phones;
         Address = request.Address;
-        Employees = request.Employees;
         Services = request.Services;
         Availability = request.Availability;
         Status = request.Status;

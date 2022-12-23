@@ -1,21 +1,27 @@
-﻿using MarcakiService.Application.Contracts;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using MarcakiService.Application.Contracts;
 using MarcakiService.Application.Contracts.Responses;
 using MarcakiService.Domain.Repository;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace MarcakiService.Application.Controllers;
 
+[ApiController]
 [Route("api/v1/provider")]
 public class ProviderController : Controller
 {
     private IMediator _mediatR;
     private IProviderRepository _repository;
+    private IAggregateRepository _aggregateRepository;
 
-    public ProviderController(IMediator mediator, IProviderRepository repository)
+    public ProviderController(IMediator mediator, IProviderRepository repository, IAggregateRepository aggregateRepository)
     {
         _mediatR = mediator;
         _repository = repository;
+        _aggregateRepository = aggregateRepository;
     }
     
     [HttpPost]
@@ -33,6 +39,8 @@ public class ProviderController : Controller
     [HttpGet]
     public IActionResult GetProviders()
     {
-        return new OkObjectResult(_repository.GetAll());
+        var response = _aggregateRepository.GetEvents()
+            .Select(x => new EventResponse(JsonConvert.DeserializeObject(x.Payload), x.EventKey));
+        return new OkObjectResult(response);
     }
 }

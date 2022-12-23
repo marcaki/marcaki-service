@@ -2,5 +2,5 @@
 
 public interface ICommand
 {
-    public string Id { get; set; }
+    public string AggregateId { get; set; }
 }

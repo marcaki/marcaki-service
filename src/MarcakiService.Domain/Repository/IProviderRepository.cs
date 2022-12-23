@@ -1,7 +1,7 @@
-﻿using MarcakiService.Domain.Entities.Aggregates;
+﻿using MarcakiService.Domain.Entities.Projections;
 
 namespace MarcakiService.Domain.Repository;
 
-public interface IProviderRepository : IRepository<Provider>
+public interface IProviderRepository : IProjectionRepository<ProviderProjection>
 {
 }

@@ -17,7 +17,7 @@ public class CreateProviderCommandHandler : IRequestHandler<CreateProvider, Unit
     
     public async Task<Unit> Handle(CreateProvider request, CancellationToken cancellationToken)
     {
-        var provider = new Provider();
+        var provider = new Provider(request);
         var @event = new ProviderCreated(request);
 
         provider.AddEvent(@event);

@@ -1,15 +1,26 @@
-﻿namespace MarcakiService.Domain.Events;
+﻿using MarcakiService.Domain.Entities.Aggregates;
+using Newtonsoft.Json;
 
-public abstract class BaseEvent : IEvent
+namespace MarcakiService.Domain.Events;
+
+public class BaseEvent : IEvent
 {
     public string Id { get; set; }
     public DateTime EventCommittedTimestamp { get; set; }
-
-    public BaseEvent()
+    public int AggregateVersion { get; set; }
+    public string AggregateId { get; set; }
+    public AggregateRoot AggregateRoot { get; set; }
+    public string AggregateType { get; set; }
+    
+    public BaseEvent(string aggregateId)
     {
-        Id = new Guid().ToString();
+        Id = aggregateId;
+        AggregateId = aggregateId;
         EventCommittedTimestamp = DateTime.UtcNow;;
     }
 
-    public abstract int AggregateVersion { get; set; }
+    public virtual string SerializePayload()
+    {
+        return JsonConvert.SerializeObject(this);
+    }
 }

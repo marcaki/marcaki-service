@@ -4,5 +4,10 @@ namespace MarcakiService.Domain.Commands;
 
 public class Command : ICommand, IRequest<Unit>
 {
-    public string Id { get; set; }
+    public string AggregateId { get; set; }
+    
+    protected Command(string aggregateId)
+    {
+        AggregateId = aggregateId;
+    }
 }

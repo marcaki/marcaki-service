@@ -1,25 +1,25 @@
-﻿using MarcakiService.Domain.Entities.Aggregates;
+﻿using MarcakiService.Domain.Entities.Projections;
 using MarcakiService.Domain.Repository;
 
 namespace MarcakiService.Repository;
 
 public class ProviderRepository : IProviderRepository
 {
-    private ReadmodelContext _readmodelContext;
+    private ReadmodelContext _readModelContext;
 
-    public ProviderRepository(ReadmodelContext readmodelContext)
+    public ProviderRepository(ReadmodelContext readModelContext)
     {
-        _readmodelContext = readmodelContext;
+        _readModelContext = readModelContext;
     }
     
-    public async Task<string> Add(Provider entity)
+    public async Task<string> Add(ProviderProjection entity)
     {
-        await _readmodelContext.Providers.AddAsync(entity);
+        await _readModelContext.Providers.AddAsync(entity);
         return entity.Id;
     }
 
-    public List<Provider> GetAll()
+    public List<ProviderProjection> GetAll()
     {
-        return _readmodelContext.Providers.ToList();
+        return _readModelContext.Providers.ToList();
     }
 }
