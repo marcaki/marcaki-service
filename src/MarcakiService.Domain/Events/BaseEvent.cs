@@ -1,9 +1,10 @@
 ﻿using MarcakiService.Domain.Entities.Aggregates;
+using MediatR;
 using Newtonsoft.Json;
 
 namespace MarcakiService.Domain.Events;
 
-public class BaseEvent : IEvent
+public class BaseEvent : IEvent, INotification
 {
     public string Id { get; set; }
     public DateTime EventCommittedTimestamp { get; set; }

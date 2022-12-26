@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using MarcakiService.Cross.CommandHandlers;
+using MarcakiService.Cross.EventHandlers;
 using MarcakiService.Domain.Repository;
 using MarcakiService.Repository;
 using MediatR;
@@ -14,6 +15,7 @@ public static class ServicesExtensions
         var assembly = Assembly.GetExecutingAssembly();
         services.AddMediatR(assembly,  typeof(CreateProviderCommandHandler).Assembly);
         services.AddTransient<CreateProviderCommandHandler>();
+        services.AddTransient<ProviderCreatedEventHandler>();
         
     }
     

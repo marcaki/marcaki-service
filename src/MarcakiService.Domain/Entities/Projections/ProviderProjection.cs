@@ -1,5 +1,6 @@
 ﻿using MarcakiService.Domain.Entities.ValueObjects;
 using MarcakiService.Domain.Enums;
+using MarcakiService.Domain.Events.Provider;
 
 namespace MarcakiService.Domain.Entities.Projections;
 
@@ -18,4 +19,24 @@ public class ProviderProjection : Projection
     public DateTime BlockedDate { get; set; }
     public DateTime CreationDate { get; set; }
     public string BlockedReason { get; set; }
+
+    public ProviderProjection()
+    {
+        
+    }
+    
+    public ProviderProjection(ProviderCreated notification)
+    {
+        Id = notification.AggregateId;
+        Name = notification.Name;
+        DocumentNumber = notification.Document.Number;
+        DocumentType = notification.Document.Type;
+        // Phones = notification.Phones;
+        Email = notification.Email;
+        // Address = notification.Address;
+        Services = notification.Services;
+        Availability = notification.Availability;
+        Status = notification.Status;
+        CreationDate = notification.CreationDate;
+    }
 }

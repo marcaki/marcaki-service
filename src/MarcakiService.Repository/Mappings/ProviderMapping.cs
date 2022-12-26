@@ -14,5 +14,6 @@ public class ProviderMapping : IEntityTypeConfiguration<ProviderProjection>
         builder.HasMany<PhoneProjection>()
             .WithOne(x => x.Provider)
             .HasForeignKey(x => x.ProviderId);
+        builder.Ignore(x => x.ActivationDate).Ignore(x => x.BlockedReason);
     }
 }

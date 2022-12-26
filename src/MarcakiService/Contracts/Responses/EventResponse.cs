@@ -1,6 +1,4 @@
-﻿using MarcakiService.Domain.Events;
-
-namespace MarcakiService.Application.Contracts.Responses;
+﻿namespace MarcakiService.Application.Contracts.Responses;
 
 public class EventResponse
 {

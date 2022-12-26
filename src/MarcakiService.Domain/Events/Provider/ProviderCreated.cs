@@ -1,10 +1,9 @@
-﻿using System.Text.Json;
-using MarcakiService.Domain.Commands;
+﻿using MarcakiService.Domain.Commands;
 using MarcakiService.Domain.Entities.ValueObjects;
 using MarcakiService.Domain.Enums;
 using Newtonsoft.Json;
 
-namespace MarcakiService.Domain.Events;
+namespace MarcakiService.Domain.Events.Provider;
 
 public class ProviderCreated : BaseEvent
 {

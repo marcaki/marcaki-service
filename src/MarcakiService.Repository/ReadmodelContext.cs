@@ -17,7 +17,6 @@ public class ReadmodelContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Availability>().HasKey(x => x.Id);
-        modelBuilder.Entity<Phone>().HasNoKey();
         modelBuilder.ApplyConfiguration(new ProviderMapping());
         base.OnModelCreating(modelBuilder);
     }
