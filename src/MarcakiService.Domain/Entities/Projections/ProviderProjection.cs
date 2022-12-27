@@ -31,9 +31,9 @@ public class ProviderProjection : Projection
         Name = notification.Name;
         DocumentNumber = notification.Document.Number;
         DocumentType = notification.Document.Type;
-        // Phones = notification.Phones;
+        Phones = notification.Phones.Select(x => new PhoneProjection(x)).ToList();
         Email = notification.Email;
-        // Address = notification.Address;
+        Address = notification.Address.Select(x => new AddressProjection(x)).ToList();
         Services = notification.Services;
         Availability = notification.Availability;
         Status = notification.Status;
