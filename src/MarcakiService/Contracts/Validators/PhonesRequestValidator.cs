@@ -10,15 +10,22 @@ public class PhonesRequestValidator : AbstractValidator<PhoneRequest>
     {
         RuleFor(x => x.Type).NotEmpty();
         RuleFor(x => x.Number).NotEmpty();
-        RuleFor(x => x.Number).Must(ValidatePhone);
+        RuleFor(x => x.Number).Must(IsValidPhone);
+        RuleFor(x => x.Number).Must(checkForSpecialCharacters);
 
     }
 
 
-   public bool ValidatePhone(string number)
+    public bool IsValidPhone(string number)
     {
-      RegularExpressionAttribute regex = new(@"^\(?\d{2}\)?[\s-]?[\s9]?\d{4}-?\d{4}$");
+        RegularExpressionAttribute regex = new(@"^\d{2}[\s-]?[\s9]?\d{4}\d{4}$");
         return regex.IsValid(number);
 
+    }
+
+    public bool checkForSpecialCharacters(string number)
+    {
+        RegularExpressionAttribute regex = new(@"^(?=.*[@!#$%^&*()/\\])");
+        return !regex.IsValid(number);
     }
 }

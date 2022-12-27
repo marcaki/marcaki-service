@@ -29,7 +29,7 @@ public class ValifatePhonesRequestTests
     }
 
     [Fact]
-    public void Validate_GivenAInvalidNumber_ShouldHaveValidationError()
+    public void Validate_GivenAnInvalidNumber_ShouldHaveValidationError()
     {
         var request = new PhoneRequest() { Number = "" };
 
@@ -40,27 +40,29 @@ public class ValifatePhonesRequestTests
     [Fact]
     public void Validate_GivenAValidNumber_ShouldNotHaveValidationError()
     {
-        var request = new PhoneRequest() { Number = "(11) 99999-9999" };
+        var request = new PhoneRequest() { Number = "85999999999" };
 
         var result = Validator.TestValidate(request);
         result.ShouldNotHaveValidationErrorFor(x => x.Number);
     }
 
     [Fact]
-    public void Validate_GivenAInvalidNumber_ShouldHaveValidationError2()
+    public void Validate_GivenAnNumber_WithTheInvalidAmountOfCharacters_MustHaveValidationError()
     {
-        var request = new PhoneRequest() { Number = "11111111111" };
+        var request = new PhoneRequest() { Number = "8598611" };
 
         var result = Validator.TestValidate(request);
         result.ShouldHaveValidationErrorFor(x => x.Number);
     }
 
+
+
     [Fact]
-    public void Validate_GivenAValidNumber_ShouldNotHaveValidationError2()
+    public void Validate_GivenANumberWithSpecialCharacters_MustHaveValidationError()
     {
-        var request = new PhoneRequest() { Number = "(11) 99999-9999" };
+        var request = new PhoneRequest() { Number = "(11)99999-9999" };
 
         var result = Validator.TestValidate(request);
-        result.ShouldNotHaveValidationErrorFor(x => x.Number);
+        result.ShouldHaveValidationErrorFor(x => x.Number);
     }
 }

@@ -28,8 +28,10 @@ public class DocumentRequestValidatorTest
         result.ShouldNotHaveValidationErrorFor(x => x.Type);
     }
 
+
+
     [Fact]
-    public void Validate_GivenAInvalidNumber_ShouldHaveValidationError()
+    public void Validate_GivenAnInvalidNumber_ShouldHaveValidationError()
     {
         var request = new DocumentRequest() { Number = "" };
 
