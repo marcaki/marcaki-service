@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using FluentValidation.TestHelper;
 using MarcakiService.Application.Contracts;
 using MarcakiService.Application.Contracts.Validators;
@@ -6,7 +5,7 @@ using Xunit;
 
 namespace MarcakiService.Application.UnitTests.Validators;
 
-public class ValifatePhonesRequestTests
+public class PhonesRequestValidatorTests
 {
     private PhonesRequestValidator Validator { get; set; } = new();
 
@@ -28,39 +27,28 @@ public class ValifatePhonesRequestTests
         result.ShouldNotHaveValidationErrorFor(x => x.Type);
     }
 
-    [Fact]
-    public void Validate_GivenAInvalidNumber_ShouldHaveValidationError()
+    [Theory]
+    [InlineData("85989455043")]
+    [InlineData("85990344400")]
+    [InlineData("21985148263")]
+    public void Validate_GivenAValidNumber_ShouldNotHaveValidationError(string number)
     {
-        var request = new PhoneRequest() { Number = "" };
-
-        var result = Validator.TestValidate(request);
-        result.ShouldHaveValidationErrorFor(x => x.Number);
-    }
-
-    [Fact]
-    public void Validate_GivenAValidNumber_ShouldNotHaveValidationError()
-    {
-        var request = new PhoneRequest() { Number = "(11) 99999-9999" };
+        var request = new PhoneRequest() { Number = number};
 
         var result = Validator.TestValidate(request);
         result.ShouldNotHaveValidationErrorFor(x => x.Number);
     }
 
-    [Fact]
-    public void Validate_GivenAInvalidNumber_ShouldHaveValidationError2()
+    [Theory]
+    [InlineData("11111111111")]
+    [InlineData("(11) 99999-9999")]
+    [InlineData("ssssssssss")]
+    [InlineData("")]
+    public void Validate_GivenAnInvalidNumber_ShouldHaveValidationError2(string number)
     {
-        var request = new PhoneRequest() { Number = "11111111111" };
+        var request = new PhoneRequest() { Number = number };
 
         var result = Validator.TestValidate(request);
         result.ShouldHaveValidationErrorFor(x => x.Number);
-    }
-
-    [Fact]
-    public void Validate_GivenAValidNumber_ShouldNotHaveValidationError2()
-    {
-        var request = new PhoneRequest() { Number = "(11) 99999-9999" };
-
-        var result = Validator.TestValidate(request);
-        result.ShouldNotHaveValidationErrorFor(x => x.Number);
     }
 }

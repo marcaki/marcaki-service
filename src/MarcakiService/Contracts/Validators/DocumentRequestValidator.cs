@@ -11,6 +11,4 @@ public class DocumentRequestValidator : AbstractValidator<DocumentRequest>
         RuleFor(x => x.Type).NotEmpty();
         RuleFor(x => x.Number).NotEmpty().Length(11, 14);
     }
-
-
 }
