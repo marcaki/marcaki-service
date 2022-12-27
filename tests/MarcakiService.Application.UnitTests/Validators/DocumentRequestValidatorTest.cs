@@ -29,7 +29,7 @@ public class DocumentRequestValidatorTest
     }
 
     [Fact]
-    public void Validate_GivenAInvalidNumber_ShouldHaveValidationError()
+    public void Validate_GivenAnInvalidNumber_ShouldHaveValidationError()
     {
         var request = new DocumentRequest() { Number = "" };
 
