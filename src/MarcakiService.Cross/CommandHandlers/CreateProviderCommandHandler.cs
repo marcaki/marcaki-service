@@ -8,7 +8,7 @@ namespace MarcakiService.Cross.CommandHandlers;
 
 public class CreateProviderCommandHandler : IRequestHandler<CreateProvider, Unit>
 {
-    private IAggregateRepository _repository;
+    private readonly IAggregateRepository _repository;
     private readonly IMediator _mediator;
 
     public CreateProviderCommandHandler(IAggregateRepository repository, IMediator mediator)

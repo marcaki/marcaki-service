@@ -42,7 +42,7 @@ public class ProviderController : Controller
     public IActionResult GetEventProviders()
     {
         var response = _aggregateRepository.GetEvents()
-            .Select(x => new EventResponse(JsonConvert.DeserializeObject<ProviderCreated>(x.Payload), x.EventKey, x.EventType));
+            .Select(x => new EventResponse(JsonConvert.DeserializeObject<ProviderCreated>(x.Payload)!, x.EventKey, x.EventType));
         return new OkObjectResult(response);
     }
 

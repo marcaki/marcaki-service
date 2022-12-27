@@ -33,7 +33,7 @@ public class ProviderCreated : BaseEvent
         Status = command.Status;
         CreationDate = command.CreationDate;
         AggregateVersion = 1;
-        AggregateType = GetType().FullName.Remove(0,29);
+        AggregateType = GetType()?.FullName?.Remove(0,29) ?? string.Empty;
     }
     
     public override string SerializePayload()
