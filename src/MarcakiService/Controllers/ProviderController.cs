@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using MarcakiService.Application.Contracts;
 using MarcakiService.Application.Contracts.Responses;
-using MarcakiService.Domain.Events;
 using MarcakiService.Domain.Events.Provider;
 using MarcakiService.Domain.Repository;
 using MediatR;
@@ -15,9 +14,9 @@ namespace MarcakiService.Application.Controllers;
 [Route("api/v1/provider")]
 public class ProviderController : Controller
 {
-    private IMediator _mediatR;
-    private IProviderRepository _repository;
-    private IAggregateRepository _aggregateRepository;
+    private readonly IMediator _mediatR;
+    private readonly IProviderRepository _repository;
+    private readonly IAggregateRepository _aggregateRepository;
 
     public ProviderController(IMediator mediator, IProviderRepository repository, IAggregateRepository aggregateRepository)
     {

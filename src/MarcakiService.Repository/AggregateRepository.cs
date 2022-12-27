@@ -1,5 +1,4 @@
-﻿using System.Text.Json;
-using MarcakiService.Domain.Entities.Aggregates;
+﻿using MarcakiService.Domain.Entities.Aggregates;
 using MarcakiService.Domain.Events;
 using MarcakiService.Domain.Repository;
 using Microsoft.EntityFrameworkCore;
@@ -8,7 +7,7 @@ namespace MarcakiService.Repository;
 
 public class AggregateRepository : IAggregateRepository
 {
-    private EventSourceContext _context;
+    private readonly EventSourceContext _context;
 
     public AggregateRepository(EventSourceContext context)
     {

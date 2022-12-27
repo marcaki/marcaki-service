@@ -5,7 +5,7 @@ namespace MarcakiService.Repository;
 
 public class ProviderRepository : IProviderRepository
 {
-    private ReadmodelContext _readModelContext;
+    private readonly ReadmodelContext _readModelContext;
 
     public ProviderRepository(ReadmodelContext readModelContext)
     {
