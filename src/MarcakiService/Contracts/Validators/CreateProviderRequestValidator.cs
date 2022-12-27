@@ -8,10 +8,12 @@ public class CreateProviderRequestValidator : AbstractValidator<CreateProviderRe
     {
         RuleFor(x => x.Name).NotEmpty();
         RuleFor(x => x.Document).NotEmpty();
-        RuleFor(x => x.Phones).NotEmpty();
         RuleFor(x => x.Email).NotEmpty();
         RuleFor(x => x.Address).NotEmpty();
         RuleFor(x => x.Services).NotEmpty();
+        RuleFor(x => x.DocumentRequest).NotEmpty().SetValidator(new DocumentRequestValidator());
+        RuleForEach(x => x.Phones).NotEmpty().SetValidator(new PhonesRequestValidator());
         RuleForEach(x => x.Availability).NotEmpty().SetValidator(new AvailabilityRequestValidator());
+        
     }
 }
