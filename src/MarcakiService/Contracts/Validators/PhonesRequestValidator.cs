@@ -11,7 +11,7 @@ public class PhonesRequestValidator : AbstractValidator<PhoneRequest>
         RuleFor(x => x.Type).NotEmpty();
         RuleFor(x => x.Number).NotEmpty();
         RuleFor(x => x.Number).Must(IsValidPhone);
-        RuleFor(x => x.Number).Must(checkForSpecialCharacters);
+        RuleFor(x => x.Number).Must(CheckForSpecialCharacters);
 
     }
 
@@ -23,7 +23,7 @@ public class PhonesRequestValidator : AbstractValidator<PhoneRequest>
 
     }
 
-    public bool checkForSpecialCharacters(string number)
+    public bool CheckForSpecialCharacters(string number)
     {
         RegularExpressionAttribute regex = new(@"^(?=.*[@!#$%^&*()/\\])");
         return !regex.IsValid(number);
