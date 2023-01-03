@@ -1,7 +1,4 @@
 using FluentValidation;
-using MarcakiService.Application.Contracts;
-using System.ComponentModel.DataAnnotations;
-
 namespace MarcakiService.Application.Contracts.Validators;
 
 public class DocumentRequestValidator : AbstractValidator<DocumentRequest>
@@ -15,6 +12,4 @@ public class DocumentRequestValidator : AbstractValidator<DocumentRequest>
 
         RuleFor(x => x.Number).NotEmpty().Length(11, 14);
     }
-
-
 }

@@ -200,7 +200,4 @@ public class CreateProviderRequestValidatorTests
         var result = Validator.TestValidate(request);
         result.ShouldNotHaveValidationErrorFor(x => x.CreationDate);
     }
-    
-
-
 }

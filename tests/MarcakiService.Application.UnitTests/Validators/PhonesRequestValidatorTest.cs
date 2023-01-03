@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using FluentValidation.TestHelper;
 using MarcakiService.Application.Contracts;
 using MarcakiService.Application.Contracts.Validators;
