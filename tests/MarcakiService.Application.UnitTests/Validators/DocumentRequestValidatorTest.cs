@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using FluentValidation.TestHelper;
 using MarcakiService.Application.Contracts;
 using MarcakiService.Application.Contracts.Validators;
@@ -10,26 +9,28 @@ public class DocumentRequestValidatorTest
 {
     private DocumentRequestValidator Validator { get; set; } = new();
 
-    [Fact]
-    public void Validate_GivenAnInvalidType_ShouldHaveValidationError()
+    [Theory]
+    [InlineData("CPR")]
+    [InlineData("CNPR")]
+    public void Validate_GivenAnInvalidType_ShouldHaveValidationError(string documentType)
     {
-        var request = new DocumentRequest() { Type = "" };
+        var request = new DocumentRequest() { Type = documentType };
 
         var result = Validator.TestValidate(request);
         result.ShouldHaveValidationErrorFor(x => x.Type);
     }
 
-    [Fact]
-    public void Validate_GivenAValidType_ShouldNotHaveValidationError()
+    [Theory]
+    [InlineData("CPF")]
+    [InlineData("CNPJ")]
+    public void Validate_GivenAValidType_ShouldNotHaveValidationError(string documentType)
     {
-        var request = new DocumentRequest() { Type = "CPF" };
+        var request = new DocumentRequest() { Type = documentType };
 
         var result = Validator.TestValidate(request);
         result.ShouldNotHaveValidationErrorFor(x => x.Type);
     }
-
-
-
+    
     [Fact]
     public void Validate_GivenAnInvalidNumber_ShouldHaveValidationError()
     {
@@ -47,6 +48,4 @@ public class DocumentRequestValidatorTest
         var result = Validator.TestValidate(request);
         result.ShouldNotHaveValidationErrorFor(x => x.Number);
     }
-
-
 }
