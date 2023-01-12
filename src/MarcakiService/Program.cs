@@ -1,7 +1,16 @@
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
+using System.Reflection;
 using HealthChecks.UI.Client;
+using MarcakiService.Cross.CommandHandlers;
 using MarcakiService.Cross.Extensions;
+using MarcakiService.Domain.Repository;
+using MarcakiService.Repository;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 [assembly: ExcludeFromCodeCoverage]
 
@@ -14,12 +23,16 @@ IConfiguration configuration = new ConfigurationBuilder()
     .Build();
 
 // Add services to the container.
-
+builder.Services.AddHealthChecks().ConfigureHealthChecks(configuration);
+builder.Services.ConfigureRepositories();
+builder.Services.ConfigureHandlers();
+builder.Services.AddScoped<ReadmodelContext>();
+builder.Services.AddScoped<IProviderRepository, ProviderRepository>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddHealthChecks().ConfigureHealthChecks(configuration);
+
 
 var app = builder.Build();
 
