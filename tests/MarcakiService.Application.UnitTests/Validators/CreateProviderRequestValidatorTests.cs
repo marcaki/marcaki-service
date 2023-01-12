@@ -8,32 +8,14 @@ namespace MarcakiService.Application.UnitTests.Validators;
 
 public class CreateProviderRequestValidatorTests
 {
-    private CreateProviderRequestValidator Validator { get; set; } = new();
-
+    private readonly CreateProviderRequestValidator _validator = new();
+    
     [Fact]
-    public void Validate_GivenAnInvalidId_ShouldHaveValidationError()
-    {
-        var request = new CreateProviderRequest() { Id = "" };
-
-        var result = Validator.TestValidate(request);
-        result.ShouldHaveValidationErrorFor(x => x.Id);
-    }
-
-    [Fact]
-    public void Validate_GivenAValidId_ShouldNotHaveValidationError()
-    {
-        var request = new CreateProviderRequest() { Id = "161615" };
-        var result = Validator.TestValidate(request);
-        result.ShouldNotHaveValidationErrorFor(x => x.Id);
-    }
-
-    [Fact]
-
-    public void Validate_GivenAInvalidName_ShouldHaveValidationError()
+    public void Validate_GivenAnInvalidName_ShouldHaveValidationError()
     {
         var request = new CreateProviderRequest() { Name = "" };
 
-        var result = Validator.TestValidate(request);
+        var result = _validator.TestValidate(request);
         result.ShouldHaveValidationErrorFor(x => x.Name);
     }
 
@@ -42,16 +24,16 @@ public class CreateProviderRequestValidatorTests
     {
         var request = new CreateProviderRequest() { Name = "Mario Roberto" };
 
-        var result = Validator.TestValidate(request);
+        var result = _validator.TestValidate(request);
         result.ShouldNotHaveValidationErrorFor(x => x.Name);
     }
 
     [Fact]
-    public void Validate_GivenAInvalidEmail_ShouldHaveValidationError()
+    public void Validate_GivenAnInvalidEmail_ShouldHaveValidationError()
     {
         var request = new CreateProviderRequest() { Email = "" };
 
-        var result = Validator.TestValidate(request);
+        var result = _validator.TestValidate(request);
         result.ShouldHaveValidationErrorFor(x => x.Email);
     }
 
@@ -59,17 +41,17 @@ public class CreateProviderRequestValidatorTests
     public void Validate_GivenAValidEmail_ShouldNotHaveValidationError()
     {
         var request = new CreateProviderRequest() { Email = "mario.costa@marcaki.com.br" };
-        var result = Validator.TestValidate(request);
+        var result = _validator.TestValidate(request);
         result.ShouldNotHaveValidationErrorFor(x => x.Email);
     }
     
 
     [Fact]
-    public void Validate_GivenAInvaliddAddress_ShouldHaveValidationError()
+    public void Validate_GivenAnInvalidAddress_ShouldHaveValidationError()
     {
-        var request = new CreateProviderRequest() { Address = new List<string>() { "" } };
+        var request = new CreateProviderRequest() { Address = new List<string>() };
 
-        var result = Validator.TestValidate(request);
+        var result = _validator.TestValidate(request);
         result.ShouldHaveValidationErrorFor(x => x.Address);
     }
 
@@ -77,42 +59,24 @@ public class CreateProviderRequestValidatorTests
     public void Validate_GivenAValidAddress_ShouldNotHaveValidationError()
     {
         var request = new CreateProviderRequest() { Address = new List<string>() { "Rua a " } };
-        var result = Validator.TestValidate(request);
+        var result = _validator.TestValidate(request);
         result.ShouldNotHaveValidationErrorFor(x => x.Address);
     }
 
-
     [Fact]
-    public void Validate_GivenAInvalidEmployees_ShouldHaveValidationError()
+    public void Validate_GivenAnInvalidServices_ShouldHaveValidationError()
     {
-        var request = new CreateProviderRequest() { Employees = new List<string>() { "" } };
+        var request = new CreateProviderRequest() { Services = "" };
 
-        var result = Validator.TestValidate(request);
-        result.ShouldHaveValidationErrorFor(x => x.Employees);
-    }
-
-    [Fact]
-    public void Validate_GivenAValidEmployees_ShouldNotHaveValidationError()
-    {
-        var request = new CreateProviderRequest() { Employees = new List<string>() { "Mario Roberto" } };
-        var result = Validator.TestValidate(request);
-        result.ShouldNotHaveValidationErrorFor(x => x.Employees);
-    }
-
-    [Fact]
-    public void Validate_GivenAInvalidServices_ShouldHaveValidationError()
-    {
-        var request = new CreateProviderRequest() { Services = new List<string>() { "" } };
-
-        var result = Validator.TestValidate(request);
+        var result = _validator.TestValidate(request);
         result.ShouldHaveValidationErrorFor(x => x.Services);
     }
 
     [Fact]
     public void Validate_GivenAValidServices_ShouldNotHaveValidationError()
     {
-        var request = new CreateProviderRequest() { Services = new List<string>() { "Serviço 1" } };
-        var result = Validator.TestValidate(request);
+        var request = new CreateProviderRequest() { Services = "Serviço 1" };
+        var result = _validator.TestValidate(request);
         result.ShouldNotHaveValidationErrorFor(x => x.Services);
     }
 

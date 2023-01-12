@@ -5,7 +5,7 @@ using Xunit;
 
 namespace MarcakiService.Application.UnitTests.Validators;
 
-public class ValifatePhonesRequestTests
+public class PhonesRequestValidatorTests
 {
     private PhonesRequestValidator Validator { get; set; } = new();
 
@@ -53,8 +53,6 @@ public class ValifatePhonesRequestTests
         var result = Validator.TestValidate(request);
         result.ShouldHaveValidationErrorFor(x => x.Number);
     }
-
-
 
     [Fact]
     public void Validate_GivenANumberWithSpecialCharacters_MustHaveValidationError()

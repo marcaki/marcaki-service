@@ -1,4 +1,7 @@
-﻿namespace MarcakiService.Application.Contracts;
+﻿using System;
+using MarcakiService.Domain.Entities.ValueObjects;
+
+namespace MarcakiService.Application.Contracts;
 
 public class AvailabilityRequest
 {
@@ -9,4 +12,9 @@ public class AvailabilityRequest
     public string Friday { get; set; }
     public string Saturday { get; set; }
     public string Sunday { get; set; }
+
+    public Availability ToDomain()
+    {
+        return new Availability( Guid.NewGuid().ToString(), Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday);
+    }
 }
