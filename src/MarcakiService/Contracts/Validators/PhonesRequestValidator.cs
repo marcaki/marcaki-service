@@ -12,9 +12,9 @@ public class PhonesRequestValidator : AbstractValidator<PhoneRequest>
         RuleFor(x => x.Number).Must(IsValidPhone);
     }
     
-    private bool IsValidPhone(string number)
+    public bool IsValidPhone(string number)
     {
-        RegularExpressionAttribute regex = new(@"^\(?\d{2}\)?[\s-]?[\s9]?\d{8}$");
+        RegularExpressionAttribute regex = new(@"^\d{2}[\s-]?[\s9]?\d{4}\d{4}$");
         return regex.IsValid(number);
     }
 }
